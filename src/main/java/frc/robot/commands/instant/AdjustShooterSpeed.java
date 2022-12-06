@@ -1,5 +1,6 @@
 package frc.robot.commands.instant;
 
+import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 import edu.wpi.first.wpilibj2.command.InstantCommand;
 import frc.robot.subsystems.Shooter;
 
@@ -29,6 +30,8 @@ public class AdjustShooterSpeed extends InstantCommand  {
 	@Override
 	public void initialize() {
 		shooter.targetSpeed += delta;
+
+		SmartDashboard.putNumber("ShooterSpeed", shooter.targetSpeed);
 	}
 
 }

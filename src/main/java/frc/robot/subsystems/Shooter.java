@@ -1,5 +1,6 @@
 package frc.robot.subsystems;
 
+import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 import edu.wpi.first.wpilibj2.command.SubsystemBase;
 
 import com.ctre.phoenix.motorcontrol.ControlMode;
@@ -10,7 +11,7 @@ import com.ctre.phoenix.motorcontrol.can.TalonSRX;
  */
 public class Shooter extends SubsystemBase  {
 
-    public double targetSpeed;
+    public double targetSpeed = 0.8;
 
 	/**
 	 * talon that controls shooting moter.
@@ -25,6 +26,8 @@ public class Shooter extends SubsystemBase  {
 	 */
 	public Shooter(TalonSRX topTalon1) {
 		this.topTalon1 = topTalon1;
+
+		SmartDashboard.putNumber("ShooterSpeed", targetSpeed);
 	}
 
 	/**
