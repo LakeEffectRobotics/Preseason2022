@@ -33,7 +33,13 @@ public class OI {
     /** Buttons on the operator controller */
     private static class OperatorButtons {
         /** Button used as example */
-        private static final Button EXAMPLE = XboxController.Button.kA;
+        private static final Button EXAMPLE = XboxController.Button.kX;
+        
+        private static final Button INCREASE = XboxController.Button.kY;
+        
+        private static final Button DECREASE = XboxController.Button.kA;
+
+        private static final Button SHOOT = XboxController.Button.kB;
     }
 
     // This contains objects for both joystick and controller driving
@@ -55,6 +61,10 @@ public class OI {
     /** Button used as example */
     public static final JoystickButton exampleButton = new JoystickButton(operatorController, OperatorButtons.EXAMPLE.value);
 
+    public static final JoystickButton increaseButton = new JoystickButton(operatorController, OperatorButtons.INCREASE.value);
+    public static final JoystickButton decreaseButton = new JoystickButton(operatorController, OperatorButtons.DECREASE.value);
+    public static final JoystickButton shootButton = new JoystickButton(operatorController, OperatorButtons.SHOOT.value);
+
 
     // Suppliers for drive inputs
 
@@ -65,7 +75,7 @@ public class OI {
     public static DoubleSupplier leftDriveSupplier = () -> {
         double raw = 0;
         // TODO: Uncomment control type you prefer
-        // raw = leftJoystick.getY();
+        raw = leftJoystick.getY();
         // raw = driverController.getLeftY();
         return processDriveInput(raw);
     };
@@ -78,7 +88,7 @@ public class OI {
     public static DoubleSupplier rightDriveSupplier = () -> {
         double raw = 0;
         // TODO: Uncomment control type you prefer
-        // raw = rightJoystick.getY();
+        raw = rightJoystick.getY();
         // raw = driverController.getRightY();
         return processDriveInput(raw);
     };
@@ -96,5 +106,4 @@ public class OI {
         // raw *= [INPUT_SCALING];
         return raw;
     }
-
 }

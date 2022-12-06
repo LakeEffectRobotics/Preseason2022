@@ -8,8 +8,12 @@ import edu.wpi.first.wpilibj.GenericHID;
 import edu.wpi.first.wpilibj.XboxController;
 import edu.wpi.first.wpilibj2.command.Command;
 import frc.robot.commands.DriveCommand;
+import frc.robot.commands.ShootCommand;
+import frc.robot.commands.instant.AdjustShooterSpeed;
 import frc.robot.commands.instant.ExampleButtonCommand;
 import frc.robot.subsystems.Drivetrain;
+import frc.robot.subsystems.Feeder;
+import frc.robot.subsystems.Shooter;
 
 /**
  * This class is where the bulk of the robot should be declared. Since Command-based is a
@@ -41,6 +45,11 @@ public class RobotContainer {
   private void configureButtonBindings() {
     // Make the ExampleButtonCommand run each time the example button is pressed
     OI.exampleButton.whenPressed(new ExampleButtonCommand());
+
+    OI.increaseButton.whenPressed(new AdjustShooterSpeed(0.05, new Shooter(RobotMap.topTalon1)));
+    OI.decreaseButton.whenPressed(new AdjustShooterSpeed(-0.05, new Shooter(RobotMap.topTalon1)));
+
+    OI.shootButton.whileHeld(new ShootCommand(new Shooter(RobotMap.topTalon1), new Feeder(RobotMap.topTalon2)));
     
     // TODO: Add your button bindings here    
   }
