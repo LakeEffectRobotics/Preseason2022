@@ -25,6 +25,8 @@ public class RobotContainer {
 
   /** Instance of the robot's drivetrain */
   private Drivetrain drivetrain = new Drivetrain(RobotMap.leftLeadTalon, RobotMap.rightLeadTalon);
+
+  private Shooter shooter = new Shooter(RobotMap.topTalon1);
   
   /** The container for the robot. Contains subsystems, OI devices, and commands. */
   public RobotContainer() {
@@ -46,8 +48,8 @@ public class RobotContainer {
     // Make the ExampleButtonCommand run each time the example button is pressed
     OI.exampleButton.whenPressed(new ExampleButtonCommand());
 
-    OI.increaseButton.whenPressed(new AdjustShooterSpeed(0.05, new Shooter(RobotMap.topTalon1)));
-    OI.decreaseButton.whenPressed(new AdjustShooterSpeed(-0.05, new Shooter(RobotMap.topTalon1)));
+    OI.increaseButton.whenPressed(new AdjustShooterSpeed(-0.05, shooter));
+    OI.decreaseButton.whenPressed(new AdjustShooterSpeed(0.05, shooter));
 
     OI.shootButton.whileHeld(new ShootCommand(new Shooter(RobotMap.topTalon1), new Feeder(RobotMap.topTalon2)));
     

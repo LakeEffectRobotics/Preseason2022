@@ -48,7 +48,7 @@ public class ShootCommand extends CommandBase  {
 	@Override
 	public void execute() {
 		shooter.setOutput(shooter.targetSpeed);
-        if (timer >= System.currentTimeMillis()) {
+        if (timer <= System.currentTimeMillis()) {
             feeder.setOutput(1);
         }
 	}

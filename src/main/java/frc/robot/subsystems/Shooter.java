@@ -11,7 +11,7 @@ import com.ctre.phoenix.motorcontrol.can.TalonSRX;
  */
 public class Shooter extends SubsystemBase  {
 
-    public double targetSpeed = 0.8;
+    public double targetSpeed = -0.8;
 
 	/**
 	 * talon that controls shooting moter.

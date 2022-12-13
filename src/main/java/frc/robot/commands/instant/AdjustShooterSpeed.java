@@ -30,6 +30,7 @@ public class AdjustShooterSpeed extends InstantCommand  {
 	@Override
 	public void initialize() {
 		shooter.targetSpeed += delta;
+		System.out.println("Targetspeed is " + shooter.targetSpeed);
 
 		SmartDashboard.putNumber("ShooterSpeed", shooter.targetSpeed);
 	}
