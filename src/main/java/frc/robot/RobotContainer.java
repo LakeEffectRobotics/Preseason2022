@@ -8,7 +8,9 @@ import edu.wpi.first.wpilibj.GenericHID;
 import edu.wpi.first.wpilibj.XboxController;
 import edu.wpi.first.wpilibj2.command.Command;
 import frc.robot.commands.DriveCommand;
+import frc.robot.commands.DriveConveyorCommand;
 import frc.robot.commands.instant.ExampleButtonCommand;
+import frc.robot.subsystems.Conveyor;
 import frc.robot.subsystems.Drivetrain;
 
 /**
@@ -21,12 +23,14 @@ public class RobotContainer {
 
   /** Instance of the robot's drivetrain */
   private Drivetrain drivetrain = new Drivetrain(RobotMap.leftLeadTalon, RobotMap.rightLeadTalon);
-  
+  private Conveyor conveyor = new Conveyor(RobotMap.topTalon1);
+
   /** The container for the robot. Contains subsystems, OI devices, and commands. */
   public RobotContainer() {
     // Configure default commands (there's some debate about where this should be done)
     // For drivetrain, use a DriveCommand with the suppliers from OI
     drivetrain.setDefaultCommand(new DriveCommand(drivetrain, OI.leftDriveSupplier, OI.rightDriveSupplier));
+    conveyor.setDefaultCommand(new DriveConveyorCommand(conveyor, OI.conveyorSpeedSupplier));
 
     // Configure the button bindings
     configureButtonBindings();

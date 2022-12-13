@@ -55,6 +55,13 @@ public class OI {
     /** Button used as example */
     public static final JoystickButton exampleButton = new JoystickButton(operatorController, OperatorButtons.EXAMPLE.value);
 
+    public static DoubleSupplier conveyorSpeedSupplier = () -> {
+        double val = operatorController.getRightY();
+        if(Math.abs(val) < 0.1) {
+            return 0;
+        }
+        return val;
+    };
 
     // Suppliers for drive inputs
 
