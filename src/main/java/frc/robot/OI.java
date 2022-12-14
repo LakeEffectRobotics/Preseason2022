@@ -34,6 +34,8 @@ public class OI {
     private static class OperatorButtons {
         /** Button used as example */
         private static final Button EXAMPLE = XboxController.Button.kA;
+        private static final Button SHOOTER_BUTTON = XboxController.Button.kB;
+
     }
 
     // This contains objects for both joystick and controller driving
@@ -54,7 +56,15 @@ public class OI {
 
     /** Button used as example */
     public static final JoystickButton exampleButton = new JoystickButton(operatorController, OperatorButtons.EXAMPLE.value);
+    public static final JoystickButton shooterButton = new JoystickButton(operatorController, OperatorButtons.SHOOTER_BUTTON.value);
 
+    public static DoubleSupplier conveyorSpeedSupplier = () -> {
+        double val = operatorController.getRightY();
+        if(Math.abs(val) < 0.1) {
+            return 0;
+        }
+        return val;
+    };
 
     // Suppliers for drive inputs
 

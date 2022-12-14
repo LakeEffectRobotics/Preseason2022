@@ -8,8 +8,12 @@ import edu.wpi.first.wpilibj.GenericHID;
 import edu.wpi.first.wpilibj.XboxController;
 import edu.wpi.first.wpilibj2.command.Command;
 import frc.robot.commands.DriveCommand;
+import frc.robot.commands.DriveConveyorCommand;
 import frc.robot.commands.instant.ExampleButtonCommand;
+import frc.robot.commands.instant.ShootCommand;
+import frc.robot.subsystems.Conveyor;
 import frc.robot.subsystems.Drivetrain;
+import frc.robot.subsystems.Shooter;
 
 /**
  * This class is where the bulk of the robot should be declared. Since Command-based is a
@@ -21,12 +25,15 @@ public class RobotContainer {
 
   /** Instance of the robot's drivetrain */
   private Drivetrain drivetrain = new Drivetrain(RobotMap.leftDriveControllers, RobotMap.rightDriveControllers);
-  
+  private Conveyor conveyor = new Conveyor(RobotMap.topTalon1);
+  private Shooter shooter = new Shooter(RobotMap.topTalon2);
+
   /** The container for the robot. Contains subsystems, OI devices, and commands. */
   public RobotContainer() {
     // Configure default commands (there's some debate about where this should be done)
     // For drivetrain, use a DriveCommand with the suppliers from OI
     drivetrain.setDefaultCommand(new DriveCommand(drivetrain, OI.leftDriveSupplier, OI.rightDriveSupplier));
+    conveyor.setDefaultCommand(new DriveConveyorCommand(conveyor, OI.conveyorSpeedSupplier));
 
     // Configure the button bindings
     configureButtonBindings();
@@ -41,7 +48,7 @@ public class RobotContainer {
   private void configureButtonBindings() {
     // Make the ExampleButtonCommand run each time the example button is pressed
     OI.exampleButton.whenPressed(new ExampleButtonCommand());
-    
+    OI.shooterButton.whileHeld(new ShootCommand(shooter));
     // TODO: Add your button bindings here    
   }
 
