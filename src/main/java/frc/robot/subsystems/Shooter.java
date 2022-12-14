@@ -11,7 +11,7 @@ import edu.wpi.first.wpilibj2.command.SubsystemBase;
 
 public class Shooter extends SubsystemBase {
  
-  private static final double SHOOTER_POWER = 1;
+  private static final double SHOOTER_POWER = .4;
 
   public TalonSRX shootermotor;
   

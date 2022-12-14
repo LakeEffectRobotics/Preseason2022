@@ -31,7 +31,7 @@ public class DriveConveyorCommand extends CommandBase {
   // Called every time the scheduler runs while the command is scheduled.
   @Override
   public void execute() {
-    conveyor.setOutput(speed.getAsDouble());
+    conveyor.setOutput(-speed.getAsDouble());
   }
 
   // Called once the command ends or is interrupted.
