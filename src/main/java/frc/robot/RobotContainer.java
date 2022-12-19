@@ -9,6 +9,7 @@ import edu.wpi.first.wpilibj.XboxController;
 import edu.wpi.first.wpilibj2.command.Command;
 import frc.robot.commands.DriveCommand;
 import frc.robot.commands.DriveConveyorCommand;
+import frc.robot.commands.DriveSlowCommand;
 import frc.robot.commands.instant.ExampleButtonCommand;
 import frc.robot.commands.instant.ShootCommand;
 import frc.robot.subsystems.Conveyor;
@@ -49,6 +50,8 @@ public class RobotContainer {
     // Make the ExampleButtonCommand run each time the example button is pressed
     OI.exampleButton.whenPressed(new ExampleButtonCommand());
     OI.shooterButton.whileHeld(new ShootCommand(shooter));
+    OI.slowButton.whileHeld(new DriveSlowCommand(drivetrain));
+
     // TODO: Add your button bindings here    
   }
 

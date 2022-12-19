@@ -35,6 +35,7 @@ public class OI {
         /** Button used as example */
         private static final Button EXAMPLE = XboxController.Button.kA;
         private static final Button SHOOTER_BUTTON = XboxController.Button.kB;
+        private static final Button SLOW_BUTTON = XboxController.Button.kRightBumper;
 
     }
 
@@ -57,6 +58,8 @@ public class OI {
     /** Button used as example */
     public static final JoystickButton exampleButton = new JoystickButton(operatorController, OperatorButtons.EXAMPLE.value);
     public static final JoystickButton shooterButton = new JoystickButton(operatorController, OperatorButtons.SHOOTER_BUTTON.value);
+    public static final JoystickButton slowButton = new JoystickButton(operatorController, OperatorButtons.SLOW_BUTTON.value);
+
 
     public static DoubleSupplier conveyorSpeedSupplier = () -> {
         double val = operatorController.getRightY();

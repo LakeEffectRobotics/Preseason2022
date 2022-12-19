@@ -17,7 +17,7 @@ public class Drivetrain extends SubsystemBase  {
 	 */
 	MotorControllerGroup rightControllers;
 
-
+	double slowConstant = 0.9;
 	/**
 	 * Create a new Drivetrain.
 	 * 
@@ -35,6 +35,11 @@ public class Drivetrain extends SubsystemBase  {
 	 * @param right right side output percet, [-1, 1]
 	 */
 	public void setOutput(double left, double right){
+
+		//Slow down
+		left *= slowConstant;
+		right *= slowConstant;
+
 		leftControllers.set(-left);
 		rightControllers.set(right);
 	}
@@ -45,6 +50,11 @@ public class Drivetrain extends SubsystemBase  {
 	public void stop(){
 		leftControllers.set(0);
 		rightControllers.set(0);
+	}
+
+	// slow down
+	public void slow(double amount) {
+		this.slowConstant = amount; 
 	}
 
 }
